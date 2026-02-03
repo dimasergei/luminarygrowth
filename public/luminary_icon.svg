@@ -1,0 +1,20 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#FAFAFA"/>
+  
+  <!-- Icon: Geometric star/light ray symbol -->
+  <g transform="translate(200, 200)">
+    <!-- Center circle -->
+    <circle cx="0" cy="0" r="12" fill="#0A0A0A"/>
+    
+    <!-- Light rays -->
+    <line x1="0" y1="0" x2="0" y2="-55" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="39" y2="-39" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="55" y2="0" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="39" y2="39" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="0" y2="55" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-39" y2="39" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-55" y2="0" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-39" y2="-39" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>
