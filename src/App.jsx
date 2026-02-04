@@ -1,229 +1,214 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-// Logo Component
 const Logo = () => (
-  <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
-    <circle cx="50" cy="50" r="6" fill="currentColor"/>
-    <line x1="50" y1="50" x2="50" y2="20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    <line x1="50" y1="50" x2="71" y2="29" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    <line x1="50" y1="50" x2="80" y2="50" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    <line x1="50" y1="50" x2="71" y2="71" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    <line x1="50" y1="50" x2="50" y2="80" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    <line x1="50" y1="50" x2="29" y2="71" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    <line x1="50" y1="50" x2="20" y2="50" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    <line x1="50" y1="50" x2="29" y2="29" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-  </svg>
+  <div className="logo-wrapper">
+    <span className="logo-text">LUMINARY</span>
+  </div>
+);
+
+const SectionLabel = ({ text }) => (
+  <span className="section-label">{text}</span>
 );
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
+  const [activeFaq, setActiveFaq] = useState(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const caseStudies = [
     {
-      title: "Skincare Brand",
-      challenge: "Struggling to scale past $50k/month without CAC spiraling",
-      solution: "Rebuilt creative testing framework, implemented segmented lookalike audiences, shifted 60% of budget to top-performing UGC ads",
-      results: [
-        "Revenue: $47k → $240k/month (6 months)",
-        "ROAS: 1.8 → 4.2",
-        "CAC: Reduced by 38%"
-      ],
-      attribution: "Founder, 7-Figure Skincare Brand"
+      brand: "Skincare Co.",
+      stats: "$30k/mo → $355k/mo",
+      label: "Revenue Growth",
+      period: "6 Months"
     },
     {
-      title: "Fitness Apparel",
-      challenge: "High traffic, low conversion rate, inconsistent ROAS",
-      solution: "Overhauled landing page strategy, launched retargeting sequences, introduced tiered creative testing",
-      results: [
-        "Revenue: $80k → $340k/month (5 months)",
-        "Conversion Rate: 1.2% → 3.8%",
-        "Ad Spend Efficiency: +67%"
-      ],
-      attribution: "CEO, DTC Fitness Brand"
+      brand: "Fitness Gear",
+      stats: "1.2% → 4.1%",
+      label: "Conversion Rate",
+      period: "5 Months"
     },
     {
-      title: "Supplement Company",
-      challenge: "Saturated market, needed to differentiate and scale profitably",
-      solution: "Developed angle-specific ad sets, A/B tested 40+ creatives, optimized for LTV over short-term ROAS",
-      results: [
-        "Revenue: $120k → $580k/month (7 months)",
-        "LTV:CAC Ratio: 2.1 → 5.4",
-        "Scaled ad spend 4.2x while maintaining profitability"
-      ],
-      attribution: "Founder, 8-Figure Supplement Co."
+      brand: "Daily Greens",
+      stats: "$120k/mo → $580k/mo",
+      label: "Revenue Growth",
+      period: "8 Months"
     }
   ];
 
   const processSteps = [
     {
-      number: "01",
+      num: "01",
       title: "Audit & Strategy",
-      description: "We analyze your current ad accounts, creative assets, and funnel performance to identify what's working and what's bleeding money. You get a detailed roadmap with prioritized optimizations.",
-      timeline: "Week 1"
+      desc: "We dive deep into your metrics to find the leaks and opportunities."
     },
     {
-      number: "02",
-      title: "Rebuild & Test",
-      description: "We restructure campaigns, launch new creative tests, and implement proven audience segmentation strategies. Every decision is backed by data, not guesswork.",
-      timeline: "Weeks 2-4"
+      num: "02",
+      title: "Creative Rebuild",
+      desc: "Our team designs high-converting UGC and static ads tailored to your brand."
     },
     {
-      number: "03",
-      title: "Scale & Optimize",
-      description: "Once we've identified winning combinations, we aggressively scale while maintaining profitability. Weekly reporting keeps you in the loop on performance and next steps.",
-      timeline: "Ongoing"
+      num: "03",
+      title: "Scale Vertically",
+      desc: "We scale what works while maintaining strict efficiency targets."
+    }
+  ];
+
+  const faqs = [
+    {
+      q: "What brands do you work with?",
+      a: "We exclusively work with E-commerce brands generating between $30k and $500k in monthly revenue."
+    },
+    {
+      q: "Do you have a monthly retainer?",
+      a: "Yes, we work on a performance + flat fee model to ensure our incentives are perfectly aligned."
+    },
+    {
+      q: "How long does it take to see results?",
+      a: "Typically, we see significant performance improvements within the first 30 days of implementation."
     }
   ];
 
   return (
     <div className="app">
-      {/* Navigation */}
       <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-content">
-          <div className="nav-logo">
-            <Logo />
-            <span>LUMINARY</span>
+          <Logo />
+          <div className="nav-links">
+            <a href="#process">Process</a>
+            <a href="#case-studies">Case Studies</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#faqs">FAQs</a>
           </div>
-          <a href="https://calendly.com/luminaryllc" target="_blank" rel="noopener noreferrer">
-            <button className="nav-cta">Book a Call</button>
-          </a>
+          <a href="https://calendly.com/luminaryllc" className="nav-cta">Schedule a call today!</a>
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section className="hero">
-        <div className="hero-content">
-          <div className="hero-badge">Growth Partners</div>
-          <h1 className="hero-title">
-            We Scale DTC Brands to 7-Figures Through Profitable Paid Acquisition
-          </h1>
-          <p className="hero-subtitle">
-            Most brands waste 40% of their ad spend on broken targeting and stale creative. We fix that—then scale what works.
-          </p>
-          <p className="hero-description">
-            Luminary specializes in Facebook, Instagram, and Google Ads for direct-to-consumer brands ready to grow. We've helped 12+ brands profitably scale past $1M in annual revenue using data-driven creative strategy and audience optimization.
-          </p>
-          <a href="https://calendly.com/luminaryllc" target="_blank" rel="noopener noreferrer">
-            <button className="hero-cta">
-              Book a Free Strategy Call
-              <span className="arrow">→</span>
-            </button>
-          </a>
-          <p className="hero-note">Currently accepting 2 new clients for Q1 2026</p>
-        </div>
-        
-        {/* Decorative elements */}
-        <div className="hero-decoration">
-          <div className="orbit orbit-1"></div>
-          <div className="orbit orbit-2"></div>
-          <div className="orbit orbit-3"></div>
-        </div>
-      </section>
-
-      {/* Case Studies Section */}
-      <section className="case-studies">
-        <div className="section-header">
-          <span className="section-label">Proof of Work</span>
-          <h2 className="section-title">Recent Client Wins</h2>
-        </div>
-        
-        <div className="case-studies-grid">
-          {caseStudies.map((study, index) => (
-            <div key={index} className="case-study-card" style={{ animationDelay: `${index * 0.1}s` }}>
-              <div className="case-study-number">{String(index + 1).padStart(2, '0')}</div>
-              <h3 className="case-study-title">{study.title}</h3>
-              
-              <div className="case-study-section">
-                <h4>Challenge</h4>
-                <p>{study.challenge}</p>
-              </div>
-              
-              <div className="case-study-section">
-                <h4>Solution</h4>
-                <p>{study.solution}</p>
-              </div>
-              
-              <div className="case-study-section">
-                <h4>Results</h4>
-                <ul className="results-list">
-                  {study.results.map((result, i) => (
-                    <li key={i}>{result}</li>
-                  ))}
-                </ul>
-              </div>
-              
-              <p className="case-study-attribution">— {study.attribution}</p>
+        <div className="container">
+          <div className="hero-content">
+            <h1 className="hero-title">
+              We help E-commerce brands grow <i>profitably</i>.
+            </h1>
+            <div className="hero-actions">
+              <a href="https://calendly.com/luminaryllc" className="btn btn-primary">Schedule a call today!</a>
+              <a href="#case-studies" className="btn btn-secondary">View case studies</a>
             </div>
-          ))}
+          </div>
+          <div className="hero-partners">
+            <p>Trusted by brands on</p>
+            <div className="partner-logos">
+              <span>Shopify</span>
+              <span>Facebook</span>
+              <span>Google</span>
+              <span>Klaviyo</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="process">
-        <div className="section-header">
-          <span className="section-label">Our Methodology</span>
-          <h2 className="section-title">How It Works</h2>
-        </div>
-        
-        <div className="process-steps">
-          {processSteps.map((step, index) => (
-            <div key={index} className="process-step">
-              <div className="step-number">{step.number}</div>
-              <div className="step-content">
-                <div className="step-header">
+      <section id="process" className="process">
+        <div className="container">
+          <SectionLabel text="Process" />
+          <h2 className="section-title">So, how do we scale your brand?</h2>
+          <div className="process-list">
+            {processSteps.map((step, i) => (
+              <div key={i} className="process-item">
+                <span className="process-num">{step.num}</span>
+                <div className="process-text">
                   <h3>{step.title}</h3>
-                  <span className="step-timeline">{step.timeline}</span>
+                  <p>{step.desc}</p>
                 </div>
-                <p>{step.description}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="case-studies" className="case-studies">
+        <div className="container">
+          <SectionLabel text="Case Studies" />
+          <h2 className="section-title">Proven results for our partners.</h2>
+          <div className="case-studies-grid">
+            {caseStudies.map((study, i) => (
+              <div key={i} className="case-card">
+                <span className="case-brand">{study.brand}</span>
+                <div className="case-main">
+                  <span className="case-stats">{study.stats}</span>
+                  <span className="case-label">{study.label}</span>
+                </div>
+                <span className="case-period">{study.period}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" className="testimonials">
+        <div className="container">
+          <SectionLabel text="Reviews" />
+          <h2 className="section-title">Hear what our <i>partners</i> have to say.</h2>
+          <div className="testimonials-grid">
+            <div className="testimonial-card">
+              <p>"Luminary completely transformed our ad strategy. We went from breaking even to our most profitable month ever in just 90 days."</p>
+              <span className="testimonial-author">Founder, Glow Skincare</span>
             </div>
-          ))}
+            <div className="testimonial-card">
+              <p>"The creative output alone is worth the investment. Their team understands DTC like no other agency we've worked with."</p>
+              <span className="testimonial-author">CEO, Peak Athletics</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="final-cta">
-        <div className="cta-content">
-          <span className="cta-label">Let's Talk</span>
-          <h2 className="cta-title">Ready to Scale?</h2>
-          <p className="cta-description">
-            We're currently working with a select group of DTC brands generating $30k-500k/month in revenue. If you're ready to profitably scale your paid acquisition, let's talk.
-          </p>
-          <a href="https://calendly.com/luminaryllc" target="_blank" rel="noopener noreferrer">
-            <button className="cta-button">
-              Schedule Your Free Strategy Call
-              <span className="arrow">→</span>
-            </button>
-          </a>
-          <p className="cta-note">
-            No pitch. Just 20 minutes to discuss your current ad performance and where you want to be in 90 days.
-          </p>
+      <section id="faqs" className="faqs">
+        <div className="container">
+          <SectionLabel text="FAQs" />
+          <h2 className="section-title">Frequent Questions</h2>
+          <div className="faq-list">
+            {faqs.map((faq, i) => (
+              <div key={i} className={`faq-item ${activeFaq === i ? 'active' : ''}`} onClick={() => setActiveFaq(activeFaq === i ? null : i)}>
+                <div className="faq-question">
+                  <h3>{faq.q}</h3>
+                  <span className="faq-icon">{activeFaq === i ? '−' : '+'}</span>
+                </div>
+                <div className="faq-answer">
+                  <p>{faq.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
+      <section className="cta-section">
+        <div className="container">
+          <h2 className="cta-title">Ready to <i>scale your brand</i>?</h2>
+          <p className="cta-desc">Schedule a free audit to see how we can help you hit your next milestone.</p>
+          <a href="https://calendly.com/luminaryllc" className="btn btn-primary large">Schedule a call today!</a>
+        </div>
+      </section>
+
       <footer className="footer">
-        <div className="footer-content">
-          <div className="footer-logo">
+        <div className="container">
+          <div className="footer-top">
             <Logo />
-            <span>LUMINARY</span>
+            <div className="footer-links">
+              <a href="#process">Process</a>
+              <a href="#case-studies">Case Studies</a>
+              <a href="#testimonials">Reviews</a>
+              <a href="mailto:luminaryllc@protonmail.com">Contact</a>
+            </div>
           </div>
-          <div className="footer-links">
-            <a href="mailto:luminaryllc@protonmail.com">luminaryllc@protonmail.com</a>
-            <a href="https://www.linkedin.com/in/dimitri-schiau-0848082ba" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <div className="footer-bottom">
+            <p>© 2026 Luminary Growth. All rights reserved.</p>
           </div>
-        </div>
-        <div className="footer-bottom">
-          <p>© 2026 Luminary Growth Partners</p>
         </div>
       </footer>
     </div>
@@ -231,3 +216,4 @@ function App() {
 }
 
 export default App;
+
