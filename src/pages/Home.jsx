@@ -256,7 +256,7 @@ const Home = () => {
                     <div className="featured-grid" style={{
                         display: 'flex',
                         justifyContent: 'center',
-                        gap: '2rem',
+                        gap: '1.25rem',
                         marginBottom: '4rem',
                         flexWrap: 'wrap'
                     }}>
@@ -266,9 +266,9 @@ const Home = () => {
                                     className="featured-item"
                                     whileHover={{ scale: 1.02 }}
                                     style={{
-                                        maxWidth: '500px', // Limit width but allow it to be large
+                                        maxWidth: '500px',
                                         width: '100%',
-                                        flex: '1 1 400px' // Allow wrapping on mobile
+                                        flex: '1 1 300px' // Slightly smaller min-width for mobile wrapping
                                     }}
                                 >
                                     <img
@@ -295,7 +295,7 @@ const Home = () => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        gap: '1rem'
+                        gap: '0.5rem' // Reduced gap for mobile
                     }}>
                         <button
                             onClick={prevShopImage}
@@ -304,8 +304,8 @@ const Home = () => {
                                 background: 'rgba(255,255,255,0.05)',
                                 border: '1px solid rgba(255,255,255,0.1)',
                                 borderRadius: '50%',
-                                width: '50px',
-                                height: '50px',
+                                width: '40px', // Smaller buttons for mobile
+                                height: '40px',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -315,16 +315,16 @@ const Home = () => {
                                 flexShrink: 0
                             }}
                         >
-                            <ChevronLeft size={24} />
+                            <ChevronLeft size={20} />
                         </button>
 
                         <div className="carousel-frame" style={{
                             width: '100%',
-                            minHeight: '400px',
+                            minHeight: '250px', // Reduced min-height for mobile
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            padding: '1rem'
+                            padding: '0.5rem'
                         }}>
                             <AnimatePresence mode="wait">
                                 <motion.img
@@ -336,7 +336,7 @@ const Home = () => {
                                     transition={{ duration: 0.3 }}
                                     style={{
                                         maxWidth: '100%',
-                                        maxHeight: '600px', // Prevent massive vertical scrolling
+                                        maxHeight: 'min(500px, 60vh)', // Better scaling for mobile
                                         width: 'auto',
                                         height: 'auto',
                                         borderRadius: '12px',
@@ -354,8 +354,8 @@ const Home = () => {
                                 background: 'rgba(255,255,255,0.05)',
                                 border: '1px solid rgba(255,255,255,0.1)',
                                 borderRadius: '50%',
-                                width: '50px',
-                                height: '50px',
+                                width: '40px', // Smaller buttons for mobile
+                                height: '40px',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -365,7 +365,7 @@ const Home = () => {
                                 flexShrink: 0
                             }}
                         >
-                            <ChevronRight size={24} />
+                            <ChevronRight size={20} />
                         </button>
                     </div>
                 </div>
